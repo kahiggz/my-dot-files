@@ -8,11 +8,20 @@ return {
   },
   config = function()
     local telescope = require("telescope")
+    -- local telescopeUtils = require("telescope.utils")
     local actions = require("telescope.actions")
+
+    -- local function display_filename_first(opts, path)
+    --   local tail = telescopeUtils.path_tail(path) -- Extracts the filename
+    --   return tail .. " -> " .. path -- Concatenates filename first, then an arrow, then full path
+    -- end
 
     telescope.setup({
       defaults = {
-        path_display = { "truncate " },
+        -- path_display = { display_filename_first },
+        path_display = {
+          "shorten",
+        },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result

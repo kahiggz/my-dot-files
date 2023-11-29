@@ -7,16 +7,24 @@ return {
   --     vim.cmd([[colorscheme nightfly]])
   --   end,
   -- },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("catppuccin").setup({
+  --       flavour = "macchiato",
+  --     })
+  --     vim.cmd.colorscheme("catppuccin")
+  --   end,
+  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "olimorris/onedarkpro.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato",
-      })
-      vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("onedark")
     end,
   },
 }

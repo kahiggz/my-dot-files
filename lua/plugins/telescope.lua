@@ -17,14 +17,27 @@ return {
       return string.format("%s (%s)", tail, path)
     end
 
-    -- local function display_filename_first(opts, path)
-    --   local tail = telescopeUtils.path_tail(path) -- Extracts the filename
-    --   return tail .. " -> " .. path -- Concatenates filename first, then an arrow, then full path
-    -- end
+    local function display_filename_first(opts, path)
+      local tail = telescopeUtils.path_tail(path) -- Extracts the filename
+      return tail .. " -> " .. path -- Concatenates filename first, then an arrow, then full path
+    end
 
     telescope.setup({
       defaults = {
-        path_display = { truncate = 15 },
+        layout_strategy = "flex",
+        -- path_display = { truncate = 15 },
+        -- to get more config options see :help telescope.setup()
+        path_display = function(opts, path)
+          local tail = require("telescope.utils").path_tail(path)
+          return string.format("%s (%s)", tail, path)
+        end,
+        layout_config = {
+          width = 0.80,
+          prompt_position = "bottom",
+          preview_cutoff = 120,
+          horizontal = { mirror = false },
+          vertical = { mirror = false },
+        },
         -- path_display = {
         --   "shorten",
         -- },

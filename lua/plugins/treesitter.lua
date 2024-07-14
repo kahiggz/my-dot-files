@@ -16,6 +16,8 @@ return {
           "vim",
           "dockerfile",
           "gitignore",
+          "markdown",
+          "markdown_inline",
         },
         sync_install = false,
         highlight = { enable = true },

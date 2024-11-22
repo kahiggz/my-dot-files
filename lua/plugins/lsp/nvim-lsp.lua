@@ -77,11 +77,35 @@ return {
     })
 
     lspconfig["angularls"].setup({
+      -- OLD
+      -- capabilities = capabilities,
+      -- on_attach = on_attach,
+      -- cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
+      -- filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+      -- root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
+
+      --New
+      cmd = {
+        "ngserver",
+        "--stdio",
+        "--tsProbeLocations",
+        "/usr/local/lib/node_modules/typescript/lib",
+        "--ngProbeLocations",
+        "/usr/local/lib/node_modules/@angular/language-server/bin",
+      },
       capabilities = capabilities,
       on_attach = on_attach,
-      cmd = { "ngserver", "--stdio", "--tsProbeLocations", "", "--ngProbeLocations", "" },
-      filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+      filetypes = { "typescript", "html", "typescript.tsx", "typescriptreact", "json" },
       root_dir = lspconfig.util.root_pattern("angular.json", "project.json"),
+      settings = {
+        angular = {
+          trace = {
+            server = {
+              verbosity = "verbose",
+            },
+          },
+        },
+      },
     })
     -- configure typescript server with plugin
     lspconfig["tsserver"].setup({

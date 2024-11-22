@@ -1,17 +1,17 @@
 return {
   "mfussenegger/nvim-lint",
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lint = require("lint")
 
+    -- Specify linters for Angular and TypeScript files
     lint.linters_by_ft = {
-      javascript = { "eslint_d" },
-      typescript = { "eslint_d" },
-      -- javascriptreact = { "eslint_d" },
-      -- typescriptreact = { "eslint_d" },
-      -- svelte = { "eslint_d" },
-      -- python = { "pylint" },
+      javascript = { "eslint" },
+      typescript = { "eslint" },
+      typescriptreact = { "eslint" }, -- Angular component files (e.g., .ts, .html)
+      html = { "eslint" }, -- To lint Angular HTML templates
+      -- Additional linters can be added as needed
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
